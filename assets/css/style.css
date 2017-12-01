@@ -6,3 +6,19 @@
 #search-window {
 	margin-top: 20px;
 }
+
+h5 {
+	color: grey;
+}
+
+#imageResult {
+	margin: 10px;
+}
+
+#leftButton {
+	margin: 1px;
+}
+
+#leftButton:hover {
+	background-color: green;
+}
