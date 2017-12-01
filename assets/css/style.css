@@ -8,7 +8,9 @@
 }
 
 h5 {
-	color: grey;
+	color: white;
+	align
+	
 }
 
 #imageResult {
@@ -25,4 +27,11 @@ h5 {
 
 #item-input{
 	width: 250px;
+}
+
+#poweredBy{
+	width: 100%;
+	background-color: black;
+	text-align: center;
+	padding: 20%;
 }
