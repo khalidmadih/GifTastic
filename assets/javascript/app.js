@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King", "Finding Nemo"];
+    var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King", "Finding Nemo", "The Godfather"];
 
     function renderButtons() {
         //Removing extra buttons
@@ -38,12 +38,11 @@ $(document).ready(function() {
     // Calling the renderButtons function to display the intial buttons
     renderButtons();
 
-
     function fetch_results() {
         $("#search-result").empty();
         // Grabbing and storing the data-name property value from the button
         var picture = $(this).attr("data-name");
-        $("#title").html("<h4> Results for: " +picture+"</h4>");
+        $("#title").html("<h4> Results for: " + picture + "</h4>");
 
         // Constructing a queryURL using the data from the btton
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -73,33 +72,39 @@ $(document).ready(function() {
 
                     // Creating and storing an image tag
                     var Image = $("<img>");
-                    // Setting the src attribute of the image to a property pulled off the result item
+                    // Setting the src attribute of the image tag
                     Image.attr("src", results[i].images.fixed_height_small_still.url);
                     Image.attr("data-still", results[i].images.fixed_height_small_still.url);
-                    Image.attr("data-animated", results[i].images.fixed_height_small.url);
+                    Image.attr("data-animate", results[i].images.fixed_height.url);
+                    Image.attr("data-state", "still");
                     Image.addClass("gif");
 
-                    // Appending the paragraph and image tag to the animalDiv
+                    // Appending the paragraph and image tag to the div
                     pictureDiv.append(p);
                     pictureDiv.append(Image);
 
-                    // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-                    $("#search-result").prepend(pictureDiv);
+                    // Prependng the Div to the HTML page in the "#search-result" div
+                    $("#search-result").prepend(pictureDiv);                  
+                    
                 }
             });
 
     }
 
-    $(".gif").on("click", function() {
-        var state = $(this).attr("data-state");
-        console.log(state);
+var animateGif = function() {
+                        var state = $(this).attr("data-state");
+                        console.log(state);
 
-        if (state == "still") {
-            $(this).attr("src", $(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
-        } else {
-            $(this).attr("src", $(this).attr("data-still"));
-        }
+                        if (state == "still") {
+                            $(this).attr("src", $(this).attr("data-animate"));
+                            $(this).attr("data-state", "animate");
+                        } else {
+                            $(this).attr("src", $(this).attr("data-still"));
+                            $(this).attr("data-state", "still");
+                        }
 
-    });
+                    };
+
+$(document).on('click', '.gif', animateGif);                    
+
 });

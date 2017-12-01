@@ -22,3 +22,7 @@ h5 {
 #leftButton:hover {
 	background-color: green;
 }
+
+#item-input{
+	width: 250px;
+}
