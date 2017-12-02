@@ -66,9 +66,15 @@ $(document).ready(function() {
                     // Creating and storing a div tag
                     var pictureDiv = $("<div>");
                     pictureDiv.attr("id", "imageResult");
+                    // pictureDiv.attr("style", "width: 20rem;");
+                    pictureDiv.addClass("card");
+
+                    var pictureCard = $("<div>");
+                    pictureCard.addClass("cardBody");
 
                     // Creating a paragraph tag with the result item's rating
-                    var p = $("<p>").html("<b>Rating: </b>" + results[i].rating + "</p>");
+                    var p = $("<p>").html("<b>Rating: </b>" + results[i].rating);
+                    p.addClass("card-text");
 
                     // Creating and storing an image tag
                     var Image = $("<img>");
@@ -77,11 +83,13 @@ $(document).ready(function() {
                     Image.attr("data-still", results[i].images.fixed_height_small_still.url);
                     Image.attr("data-animate", results[i].images.fixed_height.url);
                     Image.attr("data-state", "still");
-                    Image.addClass("gif");
+                    Image.addClass("card-img-top gif");
+
 
                     // Appending the paragraph and image tag to the div
-                    pictureDiv.append(p);
                     pictureDiv.append(Image);
+                    pictureCard.append(p);
+                    pictureDiv.append(pictureCard);
 
                     // Prependng the Div to the HTML page in the "#search-result" div
                     $("#search-result").prepend(pictureDiv);                  
