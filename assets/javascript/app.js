@@ -98,7 +98,7 @@ $(document).ready(function() {
             });
 
     }
-
+// function to animate the GIFs
 var animateGif = function() {
                         var state = $(this).attr("data-state");
                         console.log(state);
@@ -113,6 +113,8 @@ var animateGif = function() {
 
                     };
 
+
+//Calling the animateGif function 
 $(document).on('click', '.gif', animateGif);                    
 
 });
